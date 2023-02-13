@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "492575632926",
+    "project_id": "kusewa-3ee9d",
+    "storage_bucket": "kusewa-3ee9d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492575632926:android:80a6b4bf2ce79fb1fc480f",
+        "android_client_info": {
+          "package_name": "com.kusewa.kusewa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "492575632926-aopbi97eimbj4ue414bini2djlu76fvm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kusewa.kusewa",
+            "certificate_hash": "52a93d2b3016a9784b6b1f1ec9d7686da0340654"
+          }
+        },
+        {
+          "client_id": "492575632926-98gmc31a06hb0j9uf7j203cptdtio478.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvV39pJ1UpjDpjL7qZqt7RCzONWj3srQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "492575632926-98gmc31a06hb0j9uf7j203cptdtio478.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

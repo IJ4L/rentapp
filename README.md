@@ -32,12 +32,6 @@ Aplikasi ini mempermudah proses sewa menyewa barang-barang. Aplikasi ini memberi
 
 - Lakukan pembayaran melalui aplikasi
 
-
-
-<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-  <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg" alt="IMAGE ALT TEXT">
-</a>
-
 - Terima notifikasi pemesanan dan pengembalian barang
 
 ## Mvp Contributor

@@ -19,7 +19,7 @@ Aplikasi ini mempermudah proses sewa menyewa barang-barang. Aplikasi ini memberi
 ## Teknologi yang digunakan
 - Flutter sebagai framework
 
-- Firebase untuk database
+- Firebase untuk database & Login with google
 
 - GetX sebagai statemanagement
 

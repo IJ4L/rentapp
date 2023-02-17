@@ -1,16 +1,40 @@
-# kusewa
+# Kusewa
+Aplikasi ini mempermudah proses sewa menyewa barang-barang. Aplikasi ini memberikan solusi bagi penyewa dan pemilik barang untuk menyewakan dan mencari barang yang dibutuhkan dengan mudah.
 
-A new Flutter project.
+## Fitur-fitur
+- Pendaftaran akun untuk penyewa dan pemilik barang.
 
-## Getting Started
+- Realtime chat untuk interaksi atau disikusi anatar pengguna.
 
-This project is a starting point for a Flutter application.
+- Sistem pencarian barang yang mudah.
 
-A few resources to get you started if this is your first Flutter project:
+- Sistem pemesanan dan pembayaran.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- pemesanan dan pengembalian barang.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Ulasan dan rating untuk pemilik barang (Coming soon).
+
+- Histori sewa untuk setiap akun penyewa dan pemilik barang.
+
+## Teknologi yang digunakan
+- Flutter sebagai framework
+
+- Firebase untuk database
+
+- GetX sebagai statemanagement
+
+## Cara Penggunaan
+- Daftarkan diri Anda sebagai penyewa atau pemilik barang
+
+- Cari barang yang ingin Anda sewa atau ingin Anda sewakan
+
+- Klik tombol sewa untuk membuat pemesanan barang
+
+- Lakukan pembayaran melalui aplikasi
+
+- Terima notifikasi pemesanan dan pengembalian barang
+
+## Mvp Contributor
+Terima kasih banyak kepada semua pengajar yang telah memberikan wawasan dan pengetahuan kepada kita. Tanpa bantuan dan dukungan mereka, kita tidak akan berada pada posisi seperti sekarang. Terima kasih telah meluangkan waktu dan energi untuk membantu kita mempelajari hal-hal baru dan mengembangkan diri. Kita sangat berharga akan dedikasi dan komitmen mereka dalam membantu kita mencapai potensi terbaik kita.
+
+

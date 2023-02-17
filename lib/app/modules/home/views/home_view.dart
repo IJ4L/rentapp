@@ -105,23 +105,6 @@ class HomeView extends GetView<HomeController> {
                         ],
                       ),
                       Expanded(child: SizedBox()),
-                      Container(
-                        height: Get.width * 0.13,
-                        width: Get.width * 0.13,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Get.width * 0.13 / 2),
-                          border: Border.all(
-                            color: Colors.black.withOpacity(0.2),
-                          ),
-                        ),
-                        child: Center(
-                          child: Icon(Icons.notifications_outlined),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10.0,
-                      ),
                       InkWell(
                         onTap: () => Get.toNamed(Routes.CART),
                         child: Container(
@@ -149,7 +132,7 @@ class HomeView extends GetView<HomeController> {
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.04),
+                        color: Color(0xffe5ecf7).withOpacity(0.3),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Row(
@@ -392,8 +375,7 @@ class HomeView extends GetView<HomeController> {
                                                     width: 2.0,
                                                   ),
                                                   Text(
-                                                    // TODO Api google maps
-                                                    'Kota Makassar',
+                                                    'Kota ${listProduk[index2]['kota']}',
                                                     style: GoogleFonts
                                                         .plusJakartaSans(
                                                       fontSize: 13,

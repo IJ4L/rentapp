@@ -49,36 +49,84 @@ class searchview extends GetView<searchcotroller> {
                 ),
               ),
               Expanded(
-                child: Container(
-                  child: StreamBuilder<QuerySnapshot>(
-                    stream: FirebaseFirestore.instance
-                        .collection('users')
-                        .snapshots(),
-                    builder: (context, snapshots) {
-                      return (snapshots.connectionState ==
-                              ConnectionState.waiting)
-                          ? Center(child: CircularProgressIndicator())
-                          : GetBuilder<searchcotroller>(
-                              init: searchcotroller(),
-                              builder: (controller) => ListView.builder(
-                                itemCount: snapshots.data!.docs.length,
-                                itemBuilder: (context, index) {
-                                  var data = snapshots.data!.docs[index].data()
-                                      as Map<String, dynamic>;
+                child: StreamBuilder<QuerySnapshot>(
+                  stream: FirebaseFirestore.instance
+                      .collection('produk')
+                      .snapshots(),
+                  builder: (context, snapshots) {
+                    return (snapshots.connectionState ==
+                            ConnectionState.waiting)
+                        ? Center(child: CircularProgressIndicator())
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                height: 20.0,
+                              ),
+                              Text(
+                                'Produk',
+                                style: GoogleFonts.plusJakartaSans(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Expanded(
+                                child: GetBuilder<searchcotroller>(
+                                  init: searchcotroller(),
+                                  builder: (controller) => ListView.builder(
+                                    itemCount: snapshots.data!.docs.length,
+                                    itemBuilder: (context, index) {
+                                      var data = snapshots.data!.docs;
 
-                                  if (controller.name.value == '') {
-                                    return GestureDetector(
-                                      onTap: () => Get.toNamed(
-                                        Routes.CHATROOM,
-                                      ),
-                                      child: GestureDetector(
-                                        onTap: () => authC.addNewConnection(
-                                          data['Email'].toString(),
-                                          authC.userModel.value.email!,
-                                        ),
-                                        child: ListTile(
+                                      if (controller.name.value == '') {
+                                        return GestureDetector(
+                                          onTap: () => Get.toNamed(
+                                            Routes.DETAIL_PRODUK,
+                                            arguments: [
+                                              data,
+                                              index.toInt(),
+                                            ],
+                                          ),
+                                          child: ListTile(
+                                            title: Text(
+                                              data[index]['NamaProduk'],
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                color: Colors.black54,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            subtitle: Text(
+                                              data[index]['UsernameBy']
+                                                  .toString(),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                color: Colors.black54,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            leading: CircleAvatar(
+                                              backgroundImage: NetworkImage(
+                                                data[index]['Img'],
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      if (data[index]['NamaProduk']
+                                          .toString()
+                                          .toLowerCase()
+                                          .startsWith(
+                                            controller.name.value,
+                                          )) {
+                                        return ListTile(
                                           title: Text(
-                                            data['Username'],
+                                            data[index]['NamaProduk']
+                                                .toString(),
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
@@ -88,70 +136,31 @@ class searchview extends GetView<searchcotroller> {
                                             ),
                                           ),
                                           subtitle: Text(
-                                            data['Email'],
+                                            data[index]['UsernameBy']
+                                                .toString(),
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                               color: Colors.black54,
-                                              fontSize: 16,
+                                              fontSize: 14,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
                                           leading: CircleAvatar(
                                             backgroundImage: NetworkImage(
-                                              data['PhotoUrl'],
+                                              data[index]['Img'].toString(),
                                             ),
                                           ),
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  if (data['Username']
-                                      .toString()
-                                      .toLowerCase()
-                                      .startsWith(
-                                        controller.name.value,
-                                      )) {
-                                    return GestureDetector(
-                                      onTap: () => authC.addNewConnection(
-                                        data['Email'].toString(),
-                                        authC.userModel.value.email!,
-                                      ),
-                                      child: ListTile(
-                                        title: Text(
-                                          data['Username'].toString(),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            color: Colors.black54,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        subtitle: Text(
-                                          data['Email'].toString(),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            color: Colors.black54,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        leading: CircleAvatar(
-                                          backgroundImage: NetworkImage(
-                                            data['PhotoUrl'].toString(),
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  return Container();
-                                },
+                                        );
+                                      }
+                                      return Container();
+                                    },
+                                  ),
+                                ),
                               ),
-                            );
-                    },
-                  ),
+                            ],
+                          );
+                  },
                 ),
               ),
             ],

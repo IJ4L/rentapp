@@ -80,7 +80,7 @@ class Myshop_controller extends GetxController {
         'Img': photoUrl,
         'NamaProduk': namaproduk.text,
         'Harga': harga.text,
-        'Stok': stok.text,
+        'Stok': int.parse(stok.text),
         'jenis': dropdownvalu.value.toString(),
         'Minpesanan': minpesan.text,
         'Deskripsi': deskripsi.text,
@@ -139,9 +139,11 @@ class Myshop_controller extends GetxController {
     var stok;
 
     var document = await _firestore.collection('produk').doc(id);
-    await document.get().then((value) {
-      stok = value['Stok'];
-    });
+    await document.get().then(
+      (value) {
+        stok = value['Stok'];
+      },
+    );
 
     print(stok);
 
@@ -158,6 +160,7 @@ class Myshop_controller extends GetxController {
         'Harga': harga.text,
       },
     );
+    Get.back();
   }
 
   updateStok(String id) async {
@@ -166,6 +169,7 @@ class Myshop_controller extends GetxController {
         'Stok': stok.text,
       },
     );
+    Get.back();
   }
 
   hapusProduk(String id) async {

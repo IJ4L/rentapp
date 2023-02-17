@@ -628,7 +628,7 @@ class Pembayaranview extends GetView<DetailProdukController> {
                   detailProduk[index]['Harga'],
                   detailProduk[index]['Img'],
                   detailProduk[index].id,
-                  int.parse(detailProduk[index]['Stok']),
+                  detailProduk[index]['Stok'],
                 ),
                 child: Container(
                   height: Get.width * 0.12,

@@ -124,71 +124,51 @@ class DetailProdukView extends GetView<DetailProdukController> {
                       style: GoogleFonts.roboto(),
                     ),
                     linear(),
-                    Container(
-                      height: Get.width * 0.14,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(Get.width * 0.14 / 2),
+                    GestureDetector(
+                      onTap: () => authC.addNewConnection(
+                        detailProduk[index]['UploadBy'],
+                        authC.userModel.value.email!,
                       ),
-                      child: Row(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(
-                              Get.width * 0.14 / 2,
-                            ),
-                            child: Image.network(
-                              detailProduk[index]['PhotoUrl'],
-                              width: 60,
-                              height: 60,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          SizedBox(
-                            width: Get.width * 0.04,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                detailProduk[index]['UsernameBy'],
+                      child: Container(
+                        height: Get.width * 0.14,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(Get.width * 0.14 / 2),
+                        ),
+                        child: Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(
+                                Get.width * 0.14 / 2,
                               ),
-                              SizedBox(
-                                height: Get.width * 0.02,
+                              child: Image.network(
+                                detailProduk[index]['PhotoUrl'],
+                                width: 60,
+                                height: 60,
+                                fit: BoxFit.fill,
                               ),
-                              Text(
-                                detailProduk[index]['kota'],
-                              )
-                            ],
-                          ),
-                          Expanded(child: SizedBox()),
-                          // Container(
-                          //   height: Get.width * 0.095,
-                          //   width: Get.width * 0.22,
-                          //   decoration: BoxDecoration(
-                          //     gradient: const LinearGradient(
-                          //       begin: Alignment.topRight,
-                          //       end: Alignment.bottomLeft,
-                          //       colors: [
-                          //         Color(0xff2ad88f),
-                          //         Color(0xff0fc7b0),
-                          //       ],
-                          //     ),
-                          //     borderRadius: BorderRadius.circular(8),
-                          //   ),
-                          //   child: Center(
-                          //     child: Text(
-                          //       'Follow',
-                          //       style: GoogleFonts.plusJakartaSans(
-                          //         color: Colors.white,
-                          //         fontWeight: FontWeight.bold,
-                          //         fontSize: 16,
-                          //       ),
-                          //     ),
-                          //   ),
-                          // )
-                        ],
+                            ),
+                            SizedBox(
+                              width: Get.width * 0.04,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  detailProduk[index]['UsernameBy'],
+                                ),
+                                SizedBox(
+                                  height: Get.width * 0.02,
+                                ),
+                                Text(
+                                  detailProduk[index]['kota'],
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -198,70 +178,6 @@ class DetailProdukView extends GetView<DetailProdukController> {
             const SizedBox(
               height: 12.0,
             ),
-            // Padding(
-            //   padding: const EdgeInsets.all(8),
-            //   child: Container(
-            //     height: Get.width * 0.2,
-            //     width: double.infinity,
-            //     padding: EdgeInsets.symmetric(horizontal: 16),
-            //     decoration: BoxDecoration(
-            //       color: Colors.white,
-            //       borderRadius: BorderRadius.circular(8),
-            //       border: Border.all(
-            //         color: Color(0xffe5ecf7),
-            //       ),
-            //     ),
-            //     child: Row(
-            //       children: [
-            //         Expanded(
-            //           child: TextField(
-            //             cursorColor: Color(0xff0fc7b0),
-            //             scrollPadding: EdgeInsets.all(8),
-            //             decoration: InputDecoration(
-            //               hintText: 'Komentar',
-            //               enabledBorder: UnderlineInputBorder(
-            //                 borderSide: BorderSide(
-            //                   color: Color(0xffe5ecf7),
-            //                 ),
-            //               ),
-            //               focusedBorder: UnderlineInputBorder(
-            //                 borderSide: BorderSide(
-            //                   color: Color(0xff0fc7b0),
-            //                 ),
-            //               ),
-            //             ),
-            //           ),
-            //         ),
-            //         SizedBox(
-            //           width: Get.width * 0.04,
-            //         ),
-            //         Container(
-            //           height: Get.width * 0.1,
-            //           width: Get.width * 0.1,
-            //           decoration: BoxDecoration(
-            //             gradient: const LinearGradient(
-            //               begin: Alignment.topRight,
-            //               end: Alignment.bottomLeft,
-            //               colors: [
-            //                 Color(0xff2ad88f),
-            //                 Color(0xff0fc7b0),
-            //               ],
-            //             ),
-            //             borderRadius: BorderRadius.circular(8),
-            //           ),
-            //           child: Icon(
-            //             Icons.send_outlined,
-            //             color: Colors.white,
-            //             size: 16,
-            //           ),
-            //         )
-            //       ],
-            //     ),
-            //   ),
-            // ),
-            // const SizedBox(
-            //   height: 12.0,
-            // ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
@@ -371,7 +287,6 @@ class DetailProdukView extends GetView<DetailProdukController> {
                                               width: 2.0,
                                             ),
                                             Text(
-                                              // TODO Api google maps
                                               'Kota Makassar',
                                               style:
                                                   GoogleFonts.plusJakartaSans(
@@ -466,6 +381,7 @@ class DetailProdukView extends GetView<DetailProdukController> {
                 detailProduk[index]['NamaProduk'],
                 detailProduk[index]['Harga'],
                 detailProduk[index]['UploadBy'],
+                ' ${detailProduk[index]['Stok']}',
               ),
               child: Container(
                 height: Get.height * 0.4,
@@ -500,7 +416,7 @@ class DetailProdukView extends GetView<DetailProdukController> {
               ),
             ),
             const SizedBox(
-              width: 3.0,
+              width: 8.0,
             ),
             GestureDetector(
               child: detailProduk[index]['Stok'] != 0
@@ -515,7 +431,7 @@ class DetailProdukView extends GetView<DetailProdukController> {
                       },
                       child: Container(
                         height: 40,
-                        width: Get.width * 0.37,
+                        width: Get.width * 0.36,
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
                             begin: Alignment.topRight,
@@ -541,7 +457,7 @@ class DetailProdukView extends GetView<DetailProdukController> {
                     )
                   : Container(
                       height: 40,
-                      width: Get.width * 0.37,
+                      width: Get.width * 0.36,
                       decoration: BoxDecoration(
                         color: Colors.black.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(8),

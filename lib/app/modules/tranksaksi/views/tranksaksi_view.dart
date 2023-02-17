@@ -264,6 +264,10 @@ class TranksaksiView extends GetView<TranksaksiController> {
                                             data[index]['renter'],
                                             data[index].id,
                                             authC.userModel.value.email!,
+                                            data[index]['produkId'],
+                                            int.parse(
+                                              data[index]['jumlahBarang'],
+                                            ),
                                           ),
                                           child: Container(
                                             width: Get.width * 0.2,
@@ -768,8 +772,7 @@ class TranksaksiView extends GetView<TranksaksiController> {
                               }
                               return Container();
                             },
-                            separatorBuilder: (_, index) => const SizedBox(
-                            ),
+                            separatorBuilder: (_, index) => const SizedBox(),
                             itemCount: data!.length,
                           ),
                         ),
@@ -791,8 +794,7 @@ class TranksaksiView extends GetView<TranksaksiController> {
                   if (snaphot.connectionState == ConnectionState.active) {
                     return ListView.separated(
                       itemBuilder: (context, index) {
-                        if (snaphot.connectionState ==
-                                    ConnectionState.active &&
+                        if (snaphot.connectionState == ConnectionState.active &&
                                 data![index]['status'] == 'Selesai' ||
                             data![index]['status'] == 'Batal') {
                           return Padding(
@@ -858,8 +860,7 @@ class TranksaksiView extends GetView<TranksaksiController> {
                                                         .plusJakartaSans(
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      color:
-                                                          Color(0xff0fc7b0),
+                                                      color: Color(0xff0fc7b0),
                                                     ),
                                                   ),
                                           ),
@@ -914,8 +915,8 @@ class TranksaksiView extends GetView<TranksaksiController> {
                                             ),
                                             Text(
                                               'Jumlah barang : ${data[index]['jumlahBarang']}',
-                                              style: GoogleFonts
-                                                  .plusJakartaSans(),
+                                              style:
+                                                  GoogleFonts.plusJakartaSans(),
                                             )
                                           ],
                                         ),

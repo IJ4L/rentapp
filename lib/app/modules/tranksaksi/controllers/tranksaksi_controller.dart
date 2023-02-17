@@ -63,7 +63,8 @@ class TranksaksiController extends GetxController {
     );
   }
 
-  batalkanPesanan(String email, String id, String penyewa) async {
+  batalkanPesanan(
+      String email, String id, String penyewa, String idProduk, int brg) async {
     await _firestore
         .collection('users')
         .doc(email)
@@ -71,7 +72,7 @@ class TranksaksiController extends GetxController {
         .doc(id)
         .update(
       {
-        'status': 'Batal',
+        'status': 'Selesai',
       },
     );
 
@@ -83,6 +84,27 @@ class TranksaksiController extends GetxController {
         .update(
       {
         'status': 'Batal',
+      },
+    );
+
+    stokUpdate(idProduk, brg);
+  }
+
+  stokUpdate(String id, int brg) async {
+    var stok;
+
+    var document = await _firestore.collection('produk').doc(id);
+    await document.get().then(
+      (value) {
+        stok = value['Stok'];
+      },
+    );
+
+    print(stok);
+
+    _firestore.collection('produk').doc(id).update(
+      {
+        "Stok": stok + brg,
       },
     );
   }

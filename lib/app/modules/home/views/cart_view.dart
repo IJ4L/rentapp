@@ -135,36 +135,80 @@ class Cartview extends GetView<HomeController> {
                                         ],
                                       ),
                                       Expanded(child: SizedBox()),
-                                      GestureDetector(
-                                        onTap: () {
-                                          print(dataKeranjang[index]);
-                                          Get.toNamed(
-                                            Routes.BAYARCART,
-                                            arguments: [
-                                              dataKeranjang[index],
-                                            ],
-                                          );
-                                        },
-                                        child: Container(
-                                          width: Get.width * 0.2,
-                                          padding: EdgeInsets.all(8),
-                                          decoration: BoxDecoration(
-                                            color: Color(0xff0fc7b0)
-                                                .withOpacity(0.1),
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              'Sewa',
-                                              style:
-                                                  GoogleFonts.plusJakartaSans(
-                                                color: Color(0xff0fc7b0),
-                                                fontWeight: FontWeight.bold,
+                                      Column(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () => dataKeranjang[index]
+                                                        ['Stok'] !=
+                                                    0
+                                                ? Get.toNamed(
+                                                    Routes.BAYARCART,
+                                                    arguments: [
+                                                      dataKeranjang[index],
+                                                    ],
+                                                  )
+                                                : null,
+                                            child: Container(
+                                              width: Get.width * 0.2,
+                                              padding: EdgeInsets.all(8),
+                                              decoration: BoxDecoration(
+                                                color: dataKeranjang[index]
+                                                            ['Stok'] !=
+                                                        0
+                                                    ? Color(0xff0fc7b0)
+                                                        .withOpacity(0.1)
+                                                    : Colors.black
+                                                        .withOpacity(0.1),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  'Sewa',
+                                                  style: GoogleFonts
+                                                      .plusJakartaSans(
+                                                    color: dataKeranjang[index]
+                                                                ['Stok'] !=
+                                                            0
+                                                        ? Color(0xff0fc7b0)
+                                                        : Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
+                                          const SizedBox(
+                                            height: 4.0,
+                                          ),
+                                          GestureDetector(
+                                            onTap: () =>
+                                                controller.hapusKeranjang(
+                                              dataKeranjang[index].id,
+                                              authC.userModel.value.email!,
+                                            ),
+                                            child: Container(
+                                              width: Get.width * 0.2,
+                                              padding: EdgeInsets.all(8),
+                                              decoration: BoxDecoration(
+                                                color: Colors.redAccent
+                                                    .withOpacity(0.1),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  'Hapus',
+                                                  style: GoogleFonts
+                                                      .plusJakartaSans(
+                                                    color: Colors.redAccent,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       )
                                     ],
                                   ),
@@ -178,7 +222,6 @@ class Cartview extends GetView<HomeController> {
                       separatorBuilder: (_, index) => SizedBox(),
                       itemCount: dataKeranjang.length,
                     );
-                    
                   }
                   return Container();
                 },

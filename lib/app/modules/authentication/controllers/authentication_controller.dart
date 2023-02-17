@@ -28,8 +28,16 @@ class AuthenticationController extends GetxController {
   var userModel = UserModel().obs;
   var isAuth = false.obs;
 
+  String country = '';
+  String name = '';
+  String street = '';
+  String postalCode = '';
+
+  var lat = 0.1.obs;
+  var long = 0.1.obs;
+
   @override
-  void onInit() {
+  void onInit()  {
     emailController = TextEditingController();
     pwController = TextEditingController();
     usernameController = TextEditingController();
@@ -197,7 +205,6 @@ class AuthenticationController extends GetxController {
   }
 
   Future<bool> autoLogin() async {
-    // kita akan mengubah isAuth => true => autoLogin
     try {
       final isSignIn = await _googleSignIn.isSignedIn();
       if (isSignIn) {
@@ -270,17 +277,13 @@ class AuthenticationController extends GetxController {
 
   Future<void> loginGoogle() async {
     try {
-      // Ini untuk handle kebocoran data user sebelum login
       await _googleSignIn.signOut();
 
-      // Ini digunakan untuk mendapatkan google account
       await _googleSignIn.signIn().then((value) => _currentUser = value);
 
-      // ini untuk mengecek status login user
       final isSignIn = await _googleSignIn.isSignedIn();
 
       if (isSignIn) {
-        // kondisi login berhasil
         print("SUDAH BERHASIL LOGIN DENGAN AKUN : ");
         print(_currentUser);
 
@@ -297,8 +300,6 @@ class AuthenticationController extends GetxController {
 
         print("USER CREDENTIAL");
         print(userCredential);
-
-        // masukan data ke firebase...
         CollectionReference users = _firestore.collection('users');
 
         final checkuser = await users.doc(_currentUser!.email).get();

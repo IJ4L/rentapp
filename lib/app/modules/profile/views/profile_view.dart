@@ -127,7 +127,7 @@ class ProfileView extends GetView<ProfileController> {
                 _rowMaker('Security', Icons.security_outlined),
                 InkWell(
                   onTap: () => authC.addNewConnection(
-                    'kusewaadmin@gmail.com',
+                    'vccxv60@gmail.com',
                     authC.userModel.value.email!,
                   ),
                   child: _rowMaker('Help Center', Icons.info_outline),

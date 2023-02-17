@@ -53,4 +53,13 @@ class HomeController extends GetxController {
 
     return post.snapshots();
   }
+
+  hapusKeranjang(String id, String email) {
+    _firestore
+        .collection('users')
+        .doc(email)
+        .collection('keranjang')
+        .doc(id)
+        .delete();
+  }
 }

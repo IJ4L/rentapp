@@ -321,7 +321,7 @@ class Daftarproduk extends GetView<Myshop_controller> {
                                         ),
                                         child: Center(
                                           child: Text(
-                                            'Ubah harga',
+                                            'Ubah Stok',
                                             style:
                                                 GoogleFonts.plusJakartaSans(),
                                           ),

@@ -99,18 +99,21 @@ class ProfileController extends GetxController {
     await users.doc(email1).update(
       {
         "Username": email.text.isEmpty ? email1 : email.text,
-        "Nomer": nomer.text.isEmpty ? '-' : nomer.text,
-        "kota": kota.text.isEmpty ? '-' : kota.text,
+        "Nomer": nomer.text != '' ? nomer.text : '-',
+        "kota": kota.text != '' ? kota.text : '-',
         "PhotoUrl": url,
       },
     );
 
-    // Update model
     userModel.update((user) {
       user!.photoUrl = url;
+      user.username = email.text;
+      user.kota = kota.text;
     });
 
     userModel.refresh();
+
+    Get.back();
   }
 
   @override

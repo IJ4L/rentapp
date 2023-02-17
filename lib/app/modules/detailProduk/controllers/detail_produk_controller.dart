@@ -4,7 +4,6 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 class DetailProdukController extends GetxController {
   late TextEditingController label = TextEditingController();
@@ -199,13 +198,14 @@ class DetailProdukController extends GetxController {
   }
 
   keranjang(String email, String photoUrl, String namaproduk, String harga,
-      String renter) {
+      String renter, String stok) {
     _firestore.collection('users').doc(email).collection('keranjang').add(
       {
         'Img': photoUrl,
         'NamaProduk': namaproduk,
         'Harga': harga,
         'UploadBy': renter,
+        'Stok': stok,
       },
     );
   }
@@ -215,6 +215,15 @@ class DetailProdukController extends GetxController {
         .collection('users')
         .doc(email)
         .collection('keranjang')
+        .doc(id)
+        .delete();
+  }
+
+  deletAlamat(String id, String email) {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(email)
+        .collection('alamat')
         .doc(id)
         .delete();
   }

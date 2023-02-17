@@ -78,7 +78,7 @@ class Alamatview extends GetView<DetailProdukController> {
                               child: semuaAlamat![index]['utama']
                                   ? const SizedBox()
                                   : Container(
-                                      height: Get.width * 0.39,
+                                      height: Get.width * 0.27,
                                       width: double.infinity,
                                       padding: EdgeInsets.all(16),
                                       decoration: BoxDecoration(
@@ -90,71 +90,80 @@ class Alamatview extends GetView<DetailProdukController> {
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                      child: Row(
                                         children: [
-                                          Text(
-                                            semuaAlamat[index]['label'],
-                                            style: GoogleFonts.plusJakartaSans(
-                                              fontWeight: FontWeight.w800,
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                semuaAlamat[index]['label'],
+                                                style:
+                                                    GoogleFonts.plusJakartaSans(
+                                                  fontWeight: FontWeight.w800,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 3.0,
+                                              ),
+                                              Text(
+                                                semuaAlamat[index]
+                                                    ['namaPenerima'],
+                                                style:
+                                                    GoogleFonts.plusJakartaSans(
+                                                  fontWeight: FontWeight.w400,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 3.0,
+                                              ),
+                                              Text(
+                                                semuaAlamat[index]
+                                                    ['nomerTelepon'],
+                                                style:
+                                                    GoogleFonts.plusJakartaSans(
+                                                  fontWeight: FontWeight.w400,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 3.0,
+                                              ),
+                                              Text(
+                                                semuaAlamat[index]
+                                                    ['alamatLengkap'],
+                                                style:
+                                                    GoogleFonts.plusJakartaSans(
+                                                  fontWeight: FontWeight.w400,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 10.0,
+                                              ),
+                                            ],
+                                          ),
+                                          Expanded(
+                                            child: SizedBox(),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () => controller.deletAlamat(
+                                              semuaAlamat[index].id,
+                                              authC.userModel.value.email!,
                                             ),
-                                          ),
-                                          const SizedBox(
-                                            height: 3.0,
-                                          ),
-                                          Text(
-                                            semuaAlamat[index]['namaPenerima'],
-                                            style: GoogleFonts.plusJakartaSans(
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 3.0,
-                                          ),
-                                          Text(
-                                            semuaAlamat[index]['nomerTelepon'],
-                                            style: GoogleFonts.plusJakartaSans(
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 3.0,
-                                          ),
-                                          Text(
-                                            semuaAlamat[index]['alamatLengkap'],
-                                            style: GoogleFonts.plusJakartaSans(
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 10.0,
-                                          ),
-                                          InkWell(
-                                            onTap: () {},
-                                            borderRadius:
-                                                BorderRadius.circular(8),
                                             child: Container(
-                                              height: Get.width * 0.12,
-                                              width: double.infinity,
+                                              height: Get.width * 0.37,
+                                              width: 40,
                                               decoration: BoxDecoration(
+                                                color:
+                                                    Colors.red.withOpacity(0.1),
                                                 borderRadius:
                                                     BorderRadius.circular(8),
-                                                border: Border.all(
-                                                  color: Color(0xffe5ecf7),
-                                                ),
                                               ),
-                                              child: Center(
-                                                child: Text(
-                                                  'Ubah Alamat',
-                                                  style: GoogleFonts
-                                                      .plusJakartaSans(
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                ),
+                                              child: Icon(
+                                                Icons.delete_outline_outlined,
+                                                color: Colors.red,
                                               ),
                                             ),
-                                          ),
+                                          )
                                         ],
                                       ),
                                     ),

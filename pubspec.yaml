@@ -21,7 +21,6 @@ dependencies:
   google_fonts: ^4.0.3
   google_sign_in: ^5.4.4
   image_picker: ^0.8.6
-  lottie: 1.1.0
   shimmer: ^2.0.0
 
 dev_dependencies:

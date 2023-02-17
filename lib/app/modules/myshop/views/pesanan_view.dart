@@ -245,10 +245,11 @@ class Pesanan extends GetView<Myshop_controller> {
                                     ? GestureDetector(
                                         onTap: () =>
                                             controller.konfirmasiPesanan(
-                                                authC.userModel.value.email!,
-                                                data[index].id,
-                                                data[index]['penyewa'],
-                                                'Dikirim'),
+                                          authC.userModel.value.email!,
+                                          data[index].id,
+                                          data[index]['penyewa'],
+                                          'Dikirim',
+                                        ),
                                         child: Container(
                                           height: Get.width * 0.08,
                                           width: Get.width * 0.25,

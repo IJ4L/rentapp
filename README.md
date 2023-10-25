@@ -34,7 +34,5 @@ Aplikasi ini mempermudah proses sewa menyewa barang-barang. Aplikasi ini memberi
 
 - Terima notifikasi pemesanan dan pengembalian barang
 
-## Mvp Contributor
-Terima kasih banyak kepada semua pengajar yang telah memberikan wawasan dan pengetahuan kepada kita. Tanpa bantuan dan dukungan mereka, kita tidak akan berada pada posisi seperti sekarang. Terima kasih telah meluangkan waktu dan energi untuk membantu kita mempelajari hal-hal baru dan mengembangkan diri. Kita sangat berharga akan dedikasi dan komitmen mereka dalam membantu kita mencapai potensi terbaik kita.
 
 
